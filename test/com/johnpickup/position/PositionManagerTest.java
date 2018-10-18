@@ -1,10 +1,10 @@
-package com.johnpickup.positions;
+package com.johnpickup.position;
 
-import com.johnpickup.positions.data.Book;
-import com.johnpickup.positions.data.BuyOrSell;
-import com.johnpickup.positions.data.Instrument;
-import com.johnpickup.positions.trade.BondTrade;
-import com.johnpickup.positions.trade.RepoTrade;
+import com.johnpickup.data.Book;
+import com.johnpickup.data.BuyOrSell;
+import com.johnpickup.data.Instrument;
+import com.johnpickup.trade.BondTrade;
+import com.johnpickup.trade.RepoTrade;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,7 @@
-package com.johnpickup.positions;
+package com.johnpickup.position;
 
-import com.johnpickup.positions.data.Book;
-import com.johnpickup.positions.data.Instrument;
+import com.johnpickup.data.Book;
+import com.johnpickup.data.Instrument;
 import lombok.*;
 
 @RequiredArgsConstructor

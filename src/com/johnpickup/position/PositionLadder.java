@@ -1,4 +1,4 @@
-package com.johnpickup.positions;
+package com.johnpickup.position;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -7,8 +7,8 @@ import java.util.NavigableMap;
 import java.util.TreeMap;
 
 /**
- * Representation of positions over a series of dates. Applying a delta will create a new date entry if none exists
- * and update any future dated positions.
+ * Representation of position over a series of dates. Applying a delta will create a new date entry if none exists
+ * and update any future dated position.
  */
 public class PositionLadder {
     private final TreeMap<LocalDate, Position> positions = new TreeMap<>();

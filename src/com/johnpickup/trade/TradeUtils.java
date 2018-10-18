@@ -1,4 +1,4 @@
-package com.johnpickup.positions.trade;
+package com.johnpickup.trade;
 
 import java.math.BigDecimal;
 

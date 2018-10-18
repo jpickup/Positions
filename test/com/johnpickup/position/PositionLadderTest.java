@@ -1,4 +1,4 @@
-package com.johnpickup.positions;
+package com.johnpickup.position;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

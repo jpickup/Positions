@@ -1,4 +1,4 @@
-package com.johnpickup.positions.data;
+package com.johnpickup.data;
 
 public enum BuyOrSell {
     BUY,

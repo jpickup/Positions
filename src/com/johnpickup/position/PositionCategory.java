@@ -1,4 +1,4 @@
-package com.johnpickup.positions;
+package com.johnpickup.position;
 
 public enum PositionCategory {
     BOND,

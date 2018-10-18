@@ -1,4 +1,4 @@
-package com.johnpickup.positions.data;
+package com.johnpickup.data;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

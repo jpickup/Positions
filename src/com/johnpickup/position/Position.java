@@ -1,4 +1,4 @@
-package com.johnpickup.positions;
+package com.johnpickup.position;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * Representation of a position that comprises a number of component categories.
- * The net position is the sum of the individual category positions.
+ * The net position is the sum of the individual category position.
  * Immutable - applyDelta returns a new Position with the delta applied.
  */
 @EqualsAndHashCode

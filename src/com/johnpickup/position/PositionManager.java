@@ -1,15 +1,15 @@
-package com.johnpickup.positions;
+package com.johnpickup.position;
 
-import com.johnpickup.positions.data.Book;
-import com.johnpickup.positions.data.Instrument;
-import com.johnpickup.positions.trade.BondTrade;
-import com.johnpickup.positions.trade.RepoTrade;
-import com.johnpickup.positions.trade.TradeUtils;
+import com.johnpickup.data.Book;
+import com.johnpickup.data.Instrument;
+import com.johnpickup.trade.BondTrade;
+import com.johnpickup.trade.RepoTrade;
+import com.johnpickup.trade.TradeUtils;
 
 import java.time.LocalDate;
 
 /**
- * Manages positions by maintaining a cache and allowing updates to the cache in the form of trades.
+ * Manages position by maintaining a cache and allowing updates to the cache in the form of trades.
  * When a trade amendment takes place, the previous version of the trade should be un-applied
  * and the new version applied.
  */
