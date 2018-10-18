@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A collections of position ladders keyed by book+instrument
+ * A collection of position ladders keyed by book+instrument
  */
 public class PositionCache {
     private final Map<PositionKey, PositionLadder> positions = new HashMap<>();

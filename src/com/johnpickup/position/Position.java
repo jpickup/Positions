@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * Representation of a position that comprises a number of component categories.
- * The net position is the sum of the individual category position.
+ * The net position is the sum of the individual category positions.
  * Immutable - applyDelta returns a new Position with the delta applied.
  */
 @EqualsAndHashCode

@@ -9,9 +9,9 @@ import com.johnpickup.trade.TradeUtils;
 import java.time.LocalDate;
 
 /**
- * Manages position by maintaining a cache and allowing updates to the cache in the form of trades.
- * When a trade amendment takes place, the previous version of the trade should be un-applied
- * and the new version applied.
+ * Manages positions by maintaining a cache and allowing updates to the cache in the form of trades.
+ * USAGE: When a trade amendment takes place, the previous version of the trade should be un-applied
+ * and the new version applied using the apply and unapply methods.
  */
 public class PositionManager {
     private final PositionCache positionCache = new PositionCache();
