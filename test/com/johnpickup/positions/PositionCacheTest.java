@@ -1,5 +1,7 @@
 package com.johnpickup.positions;
 
+import com.johnpickup.positions.data.Book;
+import com.johnpickup.positions.data.Instrument;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
