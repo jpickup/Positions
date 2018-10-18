@@ -3,18 +3,13 @@ package com.johnpickup.positions.trade;
 import com.johnpickup.positions.data.Book;
 import com.johnpickup.positions.data.BuyOrSell;
 import com.johnpickup.positions.data.Instrument;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @RequiredArgsConstructor
-@Getter
-@EqualsAndHashCode
-@ToString
+@Data
 public class BondTrade {
     private final LocalDate settlementDate;
     private final Book book;

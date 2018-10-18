@@ -25,34 +25,34 @@ class PositionCacheTest {
     @Test
     void testEmpty() {
         Position actual = positionCache.getPosition(key1, LocalDate.of(2018, 10, 18));
-        Position expected = new Position(BigDecimal.ZERO);
+        Position expected = new Position();
         assertEquals(expected, actual);
     }
 
     @Test
     void testCreate() {
-        positionCache.applyDelta(key1, LocalDate.of(2018, 10, 18), BigDecimal.valueOf(1000));
-        positionCache.applyDelta(key2, LocalDate.of(2018, 10, 18), BigDecimal.valueOf(1000));
+        positionCache.applyDelta(key1, PositionCategory.BOND, LocalDate.of(2018, 10, 18), BigDecimal.valueOf(1000));
+        positionCache.applyDelta(key2, PositionCategory.BOND, LocalDate.of(2018, 10, 18), BigDecimal.valueOf(1000));
 
         Position actual1 = positionCache.getPosition(key1, LocalDate.of(2018, 10, 18));
         Position actual2 = positionCache.getPosition(key2, LocalDate.of(2018, 10, 18));
 
-        Position expected = new Position(BigDecimal.valueOf(1000));
+        Position expected = new Position(PositionCategory.BOND, BigDecimal.valueOf(1000));
         assertEquals(expected, actual1);
         assertEquals(expected, actual2);
     }
 
     @Test
     void testUpdate() {
-        positionCache.applyDelta(key1, LocalDate.of(2018, 10, 18), BigDecimal.valueOf(1000));
-        positionCache.applyDelta(key1, LocalDate.of(2018, 10, 18), BigDecimal.valueOf(1000));
-        positionCache.applyDelta(key2, LocalDate.of(2018, 10, 18), BigDecimal.valueOf(1000));
+        positionCache.applyDelta(key1, PositionCategory.BOND, LocalDate.of(2018, 10, 18), BigDecimal.valueOf(1000));
+        positionCache.applyDelta(key1, PositionCategory.BOND, LocalDate.of(2018, 10, 18), BigDecimal.valueOf(1000));
+        positionCache.applyDelta(key2, PositionCategory.BOND, LocalDate.of(2018, 10, 18), BigDecimal.valueOf(1000));
 
         Position actual1 = positionCache.getPosition(key1, LocalDate.of(2018, 10, 18));
         Position actual2 = positionCache.getPosition(key2, LocalDate.of(2018, 10, 18));
 
-        Position expected1 = new Position(BigDecimal.valueOf(2000));
-        Position expected2 = new Position(BigDecimal.valueOf(1000));
+        Position expected1 = new Position(PositionCategory.BOND, BigDecimal.valueOf(2000));
+        Position expected2 = new Position(PositionCategory.BOND, BigDecimal.valueOf(1000));
         assertEquals(expected1, actual1);
         assertEquals(expected2, actual2);
     }

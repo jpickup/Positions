@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A collections of positions ladders keyed by book+instrument
+ */
 public class PositionCache {
     private final Map<PositionKey, PositionLadder> positions = new HashMap<>();
 
@@ -17,7 +20,7 @@ public class PositionCache {
         return getPositionLadder(key).getPosition(date);
     }
 
-    public void applyDelta(PositionKey key, LocalDate date, BigDecimal delta) {
-        getPositionLadder(key).applyDelta(date, delta);
+    public void applyDelta(PositionKey key, PositionCategory category, LocalDate date, BigDecimal delta) {
+        getPositionLadder(key).applyDelta(date, category, delta);
     }
 }
