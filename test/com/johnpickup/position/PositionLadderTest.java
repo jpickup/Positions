@@ -1,19 +1,25 @@
 package com.johnpickup.position;
 
+import lombok.Getter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PositionLadderTest {
     private PositionLadder positionLadder;
+    private MockPositionSubscriber positionSubscriber;
 
     @BeforeEach
     void setUp() {
-        positionLadder = new PositionLadder();
+        positionSubscriber = new MockPositionSubscriber();
+        positionLadder = new PositionLadder(Collections.singletonList(positionSubscriber));
     }
 
     @Test
@@ -21,6 +27,7 @@ class PositionLadderTest {
         Position actual = positionLadder.getPosition(LocalDate.of(2018, 10, 18));
         Position expected = new Position();
         assertEquals(expected, actual);
+        assertEquals(0, positionSubscriber.getNotifications().size());
     }
 
     @Test
@@ -29,6 +36,7 @@ class PositionLadderTest {
         Position actual = positionLadder.getPosition(LocalDate.of(2018, 10, 18));
         Position expected = new Position(PositionCategory.BOND, BigDecimal.valueOf(1000));
         assertEquals(expected, actual);
+        assertEquals(1, positionSubscriber.getNotifications().size());
     }
 
     @Test
@@ -40,6 +48,7 @@ class PositionLadderTest {
         assertEquals(BigDecimal.valueOf(3000), actual.getNetPosition());
         assertEquals(BigDecimal.valueOf(2000), actual.getPositionComponent(PositionCategory.BOND));
         assertEquals(BigDecimal.valueOf(1000), actual.getPositionComponent(PositionCategory.REPO));
+        assertEquals(3, positionSubscriber.getNotifications().size());
     }
 
     @Test
@@ -61,6 +70,7 @@ class PositionLadderTest {
         Position actual20 = positionLadder.getPosition(LocalDate.of(2018, 10, 20));
         Position expected20 = new Position(PositionCategory.BOND, BigDecimal.valueOf(2000));
         assertEquals(expected20, actual20);
+        assertEquals(2, positionSubscriber.getNotifications().size());
     }
 
     @Test
@@ -80,6 +90,17 @@ class PositionLadderTest {
         Position actual20 = positionLadder.getPosition(LocalDate.of(2018, 10, 20));
         Position expected20 = new Position(PositionCategory.BOND, BigDecimal.valueOf(3000));
         assertEquals(expected20, actual20);
+
+        assertEquals(4, positionSubscriber.getNotifications().size());
     }
 
+    private class MockPositionSubscriber implements PositionSubscriber {
+        @Getter
+        private final List<PositionNotification> notifications = new ArrayList<>();
+
+        @Override
+        public void update(PositionNotification positionNotification) {
+            notifications.add(positionNotification);
+        }
+    }
 }

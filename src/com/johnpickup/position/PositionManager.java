@@ -7,6 +7,8 @@ import com.johnpickup.trade.RepoTrade;
 import com.johnpickup.trade.TradeUtils;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Manages positions by maintaining a cache and allowing updates to the cache in the form of trades.
@@ -15,6 +17,10 @@ import java.time.LocalDate;
  */
 public class PositionManager {
     private final PositionCache positionCache = new PositionCache();
+
+    public void subscribe(PositionSubscriber subscriber) {
+        positionCache.subscribe(subscriber);
+    }
 
     public void applyBondTrade(BondTrade bondTrade) {
         positionCache.applyDelta(new PositionKey(bondTrade.getBook(), bondTrade.getInstrument()),
