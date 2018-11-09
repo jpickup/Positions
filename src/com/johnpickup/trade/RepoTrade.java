@@ -7,14 +7,23 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Optional;
 
-@RequiredArgsConstructor
 @Data
 public class RepoTrade {
     private final LocalDate startDate;
-    private final LocalDate endDate;
+    private final Optional<LocalDate> endDate;
     private final Book book;
     private final Instrument instrument;
     private final BuyOrSell direction;
     private final BigDecimal quantity;
+
+    public RepoTrade(LocalDate startDate, LocalDate endDate, Book book, Instrument instrument, BuyOrSell direction, BigDecimal quantity) {
+        this.startDate = startDate;
+        this.endDate = Optional.ofNullable(endDate);
+        this.book = book;
+        this.instrument = instrument;
+        this.direction = direction;
+        this.quantity = quantity;
+    }
 }

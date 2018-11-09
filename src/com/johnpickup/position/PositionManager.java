@@ -34,10 +34,10 @@ public class PositionManager {
                 PositionCategory.REPO,
                 repoTrade.getStartDate(), TradeUtils.signedStartQuantity(repoTrade));
 
-        if (repoTrade.getEndDate() != null) {
+        if (repoTrade.getEndDate().isPresent()) {
             positionCache.applyDelta(new PositionKey(repoTrade.getBook(), repoTrade.getInstrument()),
                     PositionCategory.REPO,
-                    repoTrade.getEndDate(), TradeUtils.signedEndQuantity(repoTrade));
+                    repoTrade.getEndDate().get(), TradeUtils.signedEndQuantity(repoTrade));
         }
     }
 
@@ -46,10 +46,10 @@ public class PositionManager {
                 PositionCategory.REPO,
                 repoTrade.getStartDate(), TradeUtils.signedStartQuantity(repoTrade).negate());
 
-        if (repoTrade.getEndDate() != null) {
+        if (repoTrade.getEndDate().isPresent()) {
             positionCache.applyDelta(new PositionKey(repoTrade.getBook(), repoTrade.getInstrument()),
                     PositionCategory.REPO,
-                    repoTrade.getEndDate(), TradeUtils.signedEndQuantity(repoTrade).negate());
+                    repoTrade.getEndDate().get(), TradeUtils.signedEndQuantity(repoTrade).negate());
         }
     }
 
