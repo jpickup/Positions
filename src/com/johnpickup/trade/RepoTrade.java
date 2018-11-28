@@ -3,27 +3,28 @@ package com.johnpickup.trade;
 import com.johnpickup.data.Book;
 import com.johnpickup.data.BuyOrSell;
 import com.johnpickup.data.Instrument;
-import lombok.*;
+import com.johnpickup.position.PositionManager;
+import lombok.Builder;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Optional;
+import java.time.LocalDateTime;
 
-@Data
-public class RepoTrade {
-    private final LocalDate startDate;
-    private final Optional<LocalDate> endDate;
-    private final Book book;
-    private final Instrument instrument;
-    private final BuyOrSell direction;
-    private final BigDecimal quantity;
+@ToString(callSuper = true)
+public class RepoTrade extends SecurityTrade {
+    @Builder
+    public RepoTrade(TradeId tradeId, LocalDate startDate, LocalDate endDate, Book book, Instrument instrument,
+                     BuyOrSell direction, BigDecimal quantity, LocalDateTime eventDateTime, TradeStatus tradeStatus) {
+        super(tradeId, startDate, endDate, book, instrument, direction, quantity, eventDateTime, tradeStatus);
+    }
+    @Override
+    public void applyPositionChange(PositionManager positionManager) {
+        positionManager.applyRepoTrade(this);
+    }
 
-    public RepoTrade(LocalDate startDate, LocalDate endDate, Book book, Instrument instrument, BuyOrSell direction, BigDecimal quantity) {
-        this.startDate = startDate;
-        this.endDate = Optional.ofNullable(endDate);
-        this.book = book;
-        this.instrument = instrument;
-        this.direction = direction;
-        this.quantity = quantity;
+    @Override
+    public void unapplyPositionChange(PositionManager positionManager) {
+        positionManager.applyRepoTrade(this);
     }
 }
